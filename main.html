@@ -1,0 +1,176 @@
+
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CountDown Timer</title>
+    <style>
+      body {
+        background-color: #191919;
+        color: #d3d3d3;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+      }
+      body {
+        margin: 0;
+      }
+      #timer {
+        height: calc(100vh);
+        display: flex;
+        flex-direction: row;
+        text-transform: uppercase;
+        font-size: .7em;
+        letter-spacing: 5px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+    #compact{
+      text-transform: none;
+      font-size: .7em;
+    }
+
+      .years,
+      .months,
+      .weeks,
+      .days,
+      .hours,
+      .minutes,
+      .seconds {
+        padding: 20px 10px;
+      }
+
+      #years {
+        color: #37352F;
+      }
+
+      #months {
+        color: #37352F;
+      }
+
+      #weeks {
+        color: #37352F;
+      }
+
+      #days {
+        color: #d3d3d3;
+      }
+
+      #hours {
+        color: #d3d3d3;
+      }
+
+      #minutes {
+        color: #d3d3d3;
+      }
+
+      #seconds {
+        color: #d3d3d3;
+      }
+
+      .nw-poweredby{
+        color: #d3d3d3;
+        letter-spacing:normal;
+        z-index: 8; 
+        align-self: center; 
+        min-width: 90px; 
+        order: 2; 
+        min-height: 18px; 
+        height: max-content; 
+        flex-grow: 0; 
+        flex-shrink: 0; 
+        width: calc(100% - 20px); 
+        margin: 10px 10px 10px; 
+        padding-bottom: 30px;
+        white-space: pre-wrap; 
+        overflow: visible; 
+        word-break: break-word; 
+        line-height: 1.5; 
+        border-radius: 0px; 
+        opacity: 1; 
+        font-family: Helvetica; 
+        font-size: 9px; 
+        font-weight: 400; 
+        text-align: center;
+        cursor:pointer;
+      }
+
+      .numbers {
+        font-weight: bold;
+        font-size: 3em;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body class="">
+    <div id="timer">
+        <div class="days">
+          <div id="days" class="numbers"></div>
+          days
+        </div>
+        <div class="hours">
+          <div id="hours" class="numbers"></div>
+          hours
+        </div>
+        <div class="minutes">
+          <div id="minutes" class="numbers"></div>
+          minutes
+        </div>
+        <div class="seconds">
+          <div id="seconds" class="numbers"></div>
+          seconds
+        </div>
+    </div>
+  </body>
+  <script>
+
+    const year = new Date().getFullYear();
+    const myDate = new Date('2023-08-15 12:20 AM');
+    const padLeft = (num) => {
+      if (String(num).length > 2) {
+        return num;
+      }
+      return String("00" + num).slice(-2);
+    }
+
+    setInterval(function () {
+      const today = new Date().getTime();
+      const diff = myDate - today;
+
+      const msecPerYears = 1000 * 60 * 60 * 24 * 7 * 4 * 12;
+      const msecPerMonths = 1000 * 60 * 60 * 24 * 7 * 4;
+      const msecPerWeeks = 1000 * 60 * 60 * 24 * 7;
+      const msecPerDays = 1000 * 60 * 60 * 24;
+      const msecPerHours = 1000 * 60 * 60;
+      const msecPerMinutes = 1000 * 60 * 60;
+      const msecPerSeconds = 1000 * 60;
+
+        const days = padLeft(Math.floor(diff / (msecPerDays)));
+        const hours = padLeft(Math.floor((diff % (msecPerHours * 24)) / (msecPerMinutes)));
+        const minutes = padLeft(Math.floor((diff % (msecPerMinutes)) / (msecPerSeconds)));
+        const seconds = padLeft(Math.floor((diff % (msecPerSeconds)) / 1000));
+
+
+
+
+      if (true) {
+          document.getElementById("days").innerHTML = days;
+      }
+
+      if (true) {
+          document.getElementById("hours").innerHTML = hours;
+      }
+      
+      if (true) {
+          document.getElementById("minutes").innerHTML = minutes;
+      }
+
+      if (true) {
+          document.getElementById("seconds").innerHTML = seconds;
+      }
+    }, 1000);
+  </script>
+  </html>
